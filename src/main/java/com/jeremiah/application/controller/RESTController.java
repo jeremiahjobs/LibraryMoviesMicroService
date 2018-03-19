@@ -31,11 +31,15 @@ public class RESTController implements ErrorController{
 	}
 	
 	/**
-	 * GET operation to get all movies inside the library for http://localhost:8080/movies
+	 * GET operation to get all movies inside the library for http://localhost:8080/movies.
+	 * If we add a year to http://localhost:8080/movies?year=" " we get all movies corresponding to that year
 	 * @return returns a list with all existing movie objects 
 	 */
 	@GetMapping(value = "/movies")
-	public List<Movie> getAllMovies(){
+	public List<Movie> getAllMovies(@RequestParam( value ="year", required = false) String year){
+		if(year != null) {
+			return movieLibrary.getAllMoviesByYear(year);	
+		}
 		return movieLibrary.getAllMovies();
 	}
 	
