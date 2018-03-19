@@ -20,6 +20,9 @@ public class Movie {
 	private String starring;
 	
 	
+	public Movie() {	
+	}
+	
 	public Movie(String movieId, String title, String description, String releaseYear, String directedBy, 
 			String imdbRating, String runtime, String starring) {
 		
